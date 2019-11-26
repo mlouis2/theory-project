@@ -10,10 +10,12 @@ class NFA:
     def accepts(self, str):
         # Start with the start state
         current_states = [self.start_state]
+        # Handles lambda moves, specifically empty string case
         if (self.start_state, '') in self.transitions:
             current_states = current_states + self.transitions[(self.start_state, '')]
         # For each letter in the input
         for letter in str:
+            # Handles lambda moves
             for state in current_states:
                 if (state, '') in self.transitions:
                     current_states = current_states + self.transitions[(state, '')]
