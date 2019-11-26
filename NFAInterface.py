@@ -18,7 +18,7 @@ else:
     # Remove trailing whitespace
     accept_states = [str.rstrip() for str in accept_states]
 
-    states = list(set(start_state) & set(accept_states))
+    states = list(start_state) + list(accept_states)
     alphabet = []
     transitions = {}
 
