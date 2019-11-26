@@ -45,3 +45,8 @@ else:
             transitions[(from_state, input)] = [rhs]
 
     machine = NFA(states, alphabet, transitions, start_state, accept_states)
+
+    if (machine.accepts(string_to_check)):
+        print("The machine accepts \"" + string_to_check + "\".")
+    else:
+        print("The machine does not accept \"" + string_to_check + "\".")
