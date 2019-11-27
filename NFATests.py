@@ -34,5 +34,10 @@ class TestNFA(unittest.TestCase):
         result = NFAInterface.main()
         self.assertFalse(result)
 
+    def test_lambda(self):
+        sys.argv = ['', './test_cases/LambdaExample.txt', 'a']
+        result = NFAInterface.main()
+        self.assertTrue(result)
+
 if __name__ == '__main__':
     unittest.main()

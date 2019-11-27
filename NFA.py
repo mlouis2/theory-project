@@ -18,8 +18,12 @@ class NFA:
                         if move not in explored and move not in unexplored:
                             unexplored.append(move)
                 unexplored.remove(state)
-                explored.append(state)
-        return current_states + explored
+                if (state not in explored):
+                    explored.append(state)
+        for explored_state in explored:
+            if explored_state not in current_states:
+                current_states.append(explored_state)
+        return current_states
     def accepts(self, str):
         # Start with the start state
         current_states = [self._start_state]

@@ -1,4 +1,5 @@
 START=q0
-ACCEPT=q2
+ACCEPT=q3
 q0:a->q1
 q1->q2
+q2->q3
