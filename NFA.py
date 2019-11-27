@@ -24,12 +24,12 @@ class NFA:
             if explored_state not in current_states:
                 current_states.append(explored_state)
         return current_states
-    def accepts(self, str):
+    def accepts(self, string_to_check):
         # Start with the start state
         current_states = [self._start_state]
         current_states = self.handle_lambda_moves(current_states)
         # For each letter in the input
-        for letter in str:
+        for letter in string_to_check:
             current_states = self.handle_lambda_moves(current_states)
             print("current states is ")
             print(current_states)
@@ -39,8 +39,7 @@ class NFA:
                 # Remove the current state (may re-add if necessary)
                 current_states.remove(state)
                 # If there is a transition for that letter at that state
-                list = [state, letter]
-                if tuple(list) in self._transitions:
+                if (state, letter) in self._transitions:
                     # Then add the result of the transition to current states
                     current_states = current_states + self._transitions[(state, letter)]
         current_states = self.handle_lambda_moves(current_states)
