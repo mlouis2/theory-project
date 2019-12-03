@@ -2,11 +2,11 @@ import copy
 
 class NFA:
     def __init__(self, states, alphabet, transitions, start_state, accept_states):
-        self._states = states
-        self._alphabet = alphabet
         self._transitions = transitions
         self._start_state = start_state
         self._accept_states = accept_states
+    # Checks for lambda moves from every current state, until all possible states
+    # have been explored.
     def handle_lambda_moves(self, current_states):
         unexplored = copy.deepcopy(current_states)
         explored = []
@@ -25,14 +25,11 @@ class NFA:
                 current_states.append(explored_state)
         return current_states
     def accepts(self, string_to_check):
-        # Start with the start state
         current_states = [self._start_state]
         current_states = self.handle_lambda_moves(current_states)
         # For each letter in the input
         for letter in string_to_check:
             current_states = self.handle_lambda_moves(current_states)
-            print("current states is ")
-            print(current_states)
             copy_of_curr_states = copy.deepcopy(current_states)
             # For each state that we're at
             for state in copy_of_curr_states:
