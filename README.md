@@ -14,4 +14,4 @@ Creation of object
 `);`
 
 Command line example  
-`python3 NFAInterface.py example.txt 000`
+`python3 NFAInterface.py 00 < ./test_cases/OddZeroes.txt`
