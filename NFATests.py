@@ -53,5 +53,12 @@ class TestNFA(unittest.TestCase):
             result = NFAInterface.main()
             self.assertTrue(result)
 
+    def no_accept_state(self):
+        with open('./test_cases/NoAccept.txt','r') as f:
+            sys.stdin = f
+            sys.argv = ['', 'aaaaa']
+            result = NFAInterface.main()
+            self.assertFalse(result)
+
 if __name__ == '__main__':
     unittest.main()
